@@ -1,7 +1,7 @@
 ---
 name: PHP Modern Best Practices & Laravel Helper
 description: Enforces PSR-12, PHP 8.4+ idioms, security, Laravel/Symfony patterns, and clean code in PHP projects. Activates on .php files.
-version: 1.0
+version: 1.1
 triggers:
   - php
   - laravel
