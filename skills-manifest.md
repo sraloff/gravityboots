@@ -1,0 +1,1 @@
+skills-manifest.md
