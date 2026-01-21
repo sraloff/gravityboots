@@ -1,5 +1,4 @@
-# CodeMaster - Agentic Coding Template
-# Gravity Boots
+# Gravity Boots - Antigravity Boilerplate
 A reusable Git template repo for high-performance agentic coding with Antigravity, Claude Code, Cursor, and similar tools.  
 Supports legacy (PHP/WordPress/LAMP) and modern stacks (Python/FastAPI, Next.js/React Native) with modular skills, planning docs, and token-optimized workflows.
 
