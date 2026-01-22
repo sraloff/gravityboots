@@ -1,4 +1,4 @@
-# Coding Agent Instructions: Full Standards (Documentation, Naming, General Coding)
+# Coding Guidelines: Documentation, Naming, and General Coding
 
 ## 1. Code Documentation Standard (Language-Agnostic Content Rules)
 
