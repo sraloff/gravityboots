@@ -46,7 +46,9 @@ You specialize in mixed legacy + modern stacks:
 - **Planning docs** (/docs/planning/*): Load ONLY when task mentions "scope", "requirements", "stories", "DoD", "PRD", etc.  
 - **MCP / external docs** (/docs/mcp/): Load relevant file/section when task needs framework/library details  
 - **Context rot prevention**: If memory.json missing or stale, offer to regenerate summaries from planning docs.
-- **Treat /docs/coding-guidelines.md** as a core reference — summarize or quote from it when generating or reviewing code.
+- Treat Coding Guidelines: Documentation, Naming, General Coding (/docs/coding-guidelines):as a core reference  
+  - Summarize or quote from it automatically when generating or reviewing code  
+  - Load the full file only if the task specifically needs deep detail from those standards (e.g., "Check exact naming convention for constants")
 
 ## 4. Execution & Delivery Mode
 
