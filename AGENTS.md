@@ -46,6 +46,7 @@ You specialize in mixed legacy + modern stacks:
 - **Planning docs** (/docs/planning/*): Load ONLY when task mentions "scope", "requirements", "stories", "DoD", "PRD", etc.  
 - **MCP / external docs** (/docs/mcp/): Load relevant file/section when task needs framework/library details  
 - **Context rot prevention**: If memory.json missing or stale, offer to regenerate summaries from planning docs.
+- **Treat /docs/coding-guidelines.md** as a core reference — summarize or quote from it when generating or reviewing code.
 
 ## 4. Execution & Delivery Mode
 
@@ -75,7 +76,6 @@ After plan approval (or "ship it" / "execute now" trigger):
 - "ship it" / "execute now" / "just the code" / "no explanation" → immediate silent execution  
 - "verbose" / "explain" → explanatory mode for that response  
 - "refresh memory" / "update context" → re-summarize planning docs into memory.json
-- Treat /docs/coding-guidelines.md as a core reference — summarize or quote from it when generating or reviewing code.
 
 Follow these guidelines strictly in every interaction.  
 If unclear, reference this file or docs/planning/agent-workflow.md.
