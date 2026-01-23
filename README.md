@@ -66,40 +66,40 @@ gravity-boots/
 
 ```mermaid
 flowchart TB
-    A[User Prompt] --> B{Agent Clarifies Understanding + Recommends Prompt Updates}
+    A["User Prompt"] --> B{"Agent Clarifies Understanding + Recommends Prompt Updates"}
 
-    B --> C{Is this a new project or existing / ongoing?}
+    B --> C{"Is this a new project or existing / ongoing?"}
     
-    C -->|New / Init / Bootstrap / Start| NewPath[Run project-init skill\nCreate structure, memory.json, stubs, first commit]
-    C -->|Existing / Add feature / Fix / Refactor| ExistingPath[Read memory.json first\nLoad relevant skills based on prompt + open files]
+    C -->|New / Init / Bootstrap / Start| NewPath["Run project-init skill\nCreate structure, memory.json, stubs, first commit"]
+    C -->|Existing / Add feature / Fix / Refactor| ExistingPath["Read memory.json first\nLoad relevant skills based on prompt + open files"]
 
-    NewPath --> D[Load Memory + Planning Skills + PRD Summary]
+    NewPath --> D["Load Memory + Planning Skills + PRD Summary"]
     ExistingPath --> D
 
-    D --> E{User Approves Prompt / Intent?}
-    E -->|Yes| F[Create Granular Plan\n• Suggested skills per task\n• Memory.json updates if needed]
-    E -->|No / Revise| G[Ask Clarifying Questions or Revise Prompt]
+    D --> E{"User Approves Prompt / Intent?"}
+    E -->|Yes| F["Create Granular Plan\n• Suggested skills per task\n• Memory.json updates if needed"]
+    E -->|No / Revise| G["Ask Clarifying Questions or Revise Prompt"]
     G --> E
 
-    F --> P1{User Approves Plan?}
-    P1 -->|Yes| Exec[Begin Executing Tasks]
-    P1 -->|No / Revise| P2[Ask Clarifying Questions or Revise Plan]
+    F --> P1{"User Approves Plan?"}
+    P1 -->|Yes| Exec["Begin Executing Tasks"]
+    P1 -->|No / Revise| P2["Ask Clarifying Questions or Revise Plan"]
     P2 --> P1
 
-    Exec --> T1[Test Task Output]
-    T1 --> S{Test Success?}
-    S -->|Yes| Lint{Lint & Validation Clean?}
-    S -->|No| Fix[Fix Issues]
-    Lint -->|Yes| Mark[Mark Task Complete in current-plan.md]
+    Exec --> T1["Test Task Output"]
+    T1 --> S{"Test Success?"}
+    S -->|Yes| Lint{"Lint & Validation Clean?"}
+    S -->|No| Fix["Fix Issues"]
+    Lint -->|Yes| Mark["Mark Task Complete in current-plan.md"]
     Lint -->|No| Fix
     Fix --> T1
-    Fix --> P3{User Approval Needed?}
-    P3 -->|Yes| P4[Ask Clarifying Questions or Revise]
+    Fix --> P3{"User Approval Needed?"}
+    P3 -->|Yes| P4["Ask Clarifying Questions or Revise"]
     P3 -->|No| T1
     P4 --> P3
 
-    Mark --> Git[Git Operations\n- git pull\n- Commit with Conventional Commit\n- git push (with safety checks)]
-    Git --> Done[Update Changelog / Memory / Docs\nAlert User / Loop to Next Item]
+    Mark --> Git["Git Operations\n- git pull\n- Commit with Conventional Commit\n- git push (with safety checks)"]
+    Git --> Done["Update Changelog / Memory / Docs\nAlert User / Loop to Next Item"]
 
     Done --> End[Task Complete\nLoop to Next Item or End]
 
