@@ -18,3 +18,4 @@ __pycache__/
 # Agent (Prod Exclusions - See README)
 # Note: We do NOT ignore .agent/ in git, because it is the "source code" of the agent.
 # It is excluded via .dockerignore for production builds.
+.DS_Store
