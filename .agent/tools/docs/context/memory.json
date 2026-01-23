@@ -1,0 +1,20 @@
+{
+  "project": {
+    "name": "[Project Name – to be customized]",
+    "description_summary": "New project bootstrapped from Gravity Boots template",
+    "last_updated": "2026-01-23T16:26:57.086684Z"
+  },
+  "prd_summary": "Vision: [to be filled]",
+  "scope_summary": "In scope: [to be filled]",
+  "technical_specs_summary": "Stack: [to be filled]",
+  "active_user_stories": [],
+  "open_questions": [],
+  "key_decisions": [
+    "Bootstrapped with project-init skill"
+  ],
+  "recent_milestones": [],
+  "last_agent_action": {
+    "timestamp": "2026-01-23T16:26:57.086935Z",
+    "summary": "Fallback memory created (template missing)"
+  }
+}

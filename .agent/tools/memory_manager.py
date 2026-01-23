@@ -15,63 +15,74 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-MEMORY_FILE = Path("docs/context/memory.json")
+# Make paths relative to repo root from script location (.agent/tools/)
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+MEMORY_FILE = REPO_ROOT / "docs/context/memory.json"
+TEMPLATE_FILE = REPO_ROOT / "docs/context/memory-template.json"
 
 
 def ensure_file_exists() -> None:
-    """Create memory.json with default structure if it doesn't exist."""
-    if not MEMORY_FILE.exists():
-        default_data = {
-            "project": {
-                "name": "[Project Name – to be customized]",
-                "description_summary": "New project bootstrapped from Gravity Boots template",
-                "last_updated": datetime.utcnow().isoformat() + "Z"
-            },
-            "prd_summary": "Vision: [to be filled]",
-            "scope_summary": "In scope: [to be filled]",
-            "technical_specs_summary": "Stack: [to be filled]",
-            "active_user_stories": [],
-            "open_questions": [],
-            "key_decisions": ["Bootstrapped with project-init skill"],
-            "recent_milestones": [],
-            "last_agent_action": {
-                "timestamp": datetime.utcnow().isoformat() + "Z",
-                "summary": "Initial project memory created"
-            }
+    """Create memory.json from template if missing, or fallback to minimal defaults."""
+    if MEMORY_FILE.exists():
+        return
+
+    MEMORY_FILE.parent.mkdir(parents=True, exist_ok=True)
+
+    if TEMPLATE_FILE.exists():
+        with TEMPLATE_FILE.open("r", encoding="utf-8") as t:
+            data = json.load(t)
+        with MEMORY_FILE.open("w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+        print(f"Created memory.json from template: {MEMORY_FILE}")
+        return
+
+    # Fallback minimal structure if template also missing
+    fallback = {
+        "project": {
+            "name": "[Project Name – to be customized]",
+            "description_summary": "New project bootstrapped from Gravity Boots template",
+            "last_updated": datetime.utcnow().isoformat() + "Z"
+        },
+        "prd_summary": "Vision: [to be filled]",
+        "scope_summary": "In scope: [to be filled]",
+        "technical_specs_summary": "Stack: [to be filled]",
+        "active_user_stories": [],
+        "open_questions": [],
+        "key_decisions": ["Bootstrapped with project-init skill"],
+        "recent_milestones": [],
+        "last_agent_action": {
+            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "summary": "Fallback memory created (template missing)"
         }
-        MEMORY_FILE.parent.mkdir(parents=True, exist_ok=True)
-        with open(MEMORY_FILE, "w", encoding="utf-8") as f:
-            json.dump(default_data, f, indent=2, ensure_ascii=False)
-        print(f"Created initial memory file: {MEMORY_FILE}")
+    }
+    with MEMORY_FILE.open("w", encoding="utf-8") as f:
+        json.dump(fallback, f, indent=2, ensure_ascii=False)
+    print(f"Created fallback memory.json: {MEMORY_FILE}")
 
 
 def load_memory() -> dict:
     """Load the current memory.json content."""
     ensure_file_exists()
-    with open(MEMORY_FILE, "r", encoding="utf-8") as f:
+    with MEMORY_FILE.open("r", encoding="utf-8") as f:
         return json.load(f)
 
 
 def save_memory(data: dict) -> None:
     """Save updated memory back to file."""
-    with open(MEMORY_FILE, "w", encoding="utf-8") as f:
+    with MEMORY_FILE.open("w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     print(f"Memory updated: {MEMORY_FILE}")
 
 
 def update_field(key_path: str, value: Any) -> None:
-    """
-    Update a field using dot notation (e.g., 'project.name' or 'last_agent_action.summary').
-    """
+    """Update a field using dot notation (e.g., 'project.name' or 'last_agent_action.summary')."""
     data = load_memory()
     keys = key_path.split(".")
     current = data
-
     for k in keys[:-1]:
         if k not in current or not isinstance(current[k], dict):
             current[k] = {}
         current = current[k]
-
     current[keys[-1]] = value
     save_memory(data)
 
@@ -105,17 +116,12 @@ def main():
 
     if cmd == "read":
         read()
-
     elif cmd == "update" and len(sys.argv) == 4:
-        key_path = sys.argv[2]
-        value = sys.argv[3]  # Simple string for now; can extend to JSON later
-        update_field(key_path, value)
-
+        update_field(sys.argv[2], sys.argv[3])
     elif cmd == "append" and len(sys.argv) >= 4:
         key = sys.argv[2]
-        item = " ".join(sys.argv[3:])  # Treat rest as string (extend for JSON if needed)
+        item = " ".join(sys.argv[3:])  # string for now
         append_to_list(key, item)
-
     else:
         print("Invalid command or arguments")
         sys.exit(1)
