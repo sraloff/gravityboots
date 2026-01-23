@@ -8,14 +8,16 @@ A reusable Git template repo for high-performance agentic coding with Antigravit
 
 2. Open in Antigravity as a workspace.
 
-3. Prompt the agent (Major Tom):  
-   "Initialize this new project"  
-   → The project-init skill will create any missing folders/files, git init, stubs, and memory.json.
+3.  **Initialize Project**:
+    *   **Auto**: Prompt the agent "Initialize this new project".
+    *   **Manual**: Run `python .agent/tools/init_project.py "My Project Name"`.
+    *   This creates folder structures, `memory.json`, and initial docs.
 
-4. Customize:  
-   - Edit /docs/planning/prd.md with your project vision.  
-   - Add skills to .agent/skills/ as needed.  
-   - Run local install commands for dependencies (e.g., composer install for PHP).
+4.  **Customize**:
+    *   **Required**: Edit `/docs/planning/prd.md` with your project vision.
+    *   **Optional**: Fill out `scope.md`, `technical-specs.md`, and `user-stories.md` for better agent guidance.
+    *   Review `.agent/skills/` and `skills-manifest.md` to see available capabilities.
+    *   Run local install commands for dependencies (e.g., `composer install` or `npm install`).
 
 5. Start prompting for features:  
    "Add user authentication with OAuth"  
@@ -27,6 +29,9 @@ gravity-boots/
 │   ├── skills/                           # Modular skills (flat)
 │   │   └── project-init/                 # Example: the init skill
 │   │       └── SKILL.md
+│   ├── rules/                            # Agent rules (coding standards)
+│   │   ├── php-standards.md
+│   │   └── ...
 │   └── tools/                            # Helper scripts
 │       └── memory_manager.py             # Memory management
 ├── docs/                                 # Documentation
@@ -111,8 +116,16 @@ flowchart TB
 * MCP for external docs (/docs/mcp/)
 * Yes/no approval loop + silent execution mode
 * Artifact organization (/sql/, /examples/json/)
+* Rule-based coding standards (.agent/rules/) for auto-compliance
 * Lint/validation before commits
 * Supports mixed stacks: PHP, Python, Next.js, etc.
+
+## Deployment & Production
+**Important**: The `.agent/` folder, `docs/`, and `AGENTS.md` are your "Source Code for the Agent". 
+1.  **Repository**: Keep these files in Git. The agent needs them to understand and build your project.
+2.  **Production Server**: Exclude them. They are not needed for the runtime application.
+    *   Use `.dockerignore` (provided) to exclude them from container builds.
+    *   Use `rsync --exclude-from` if deploying via SSH.
 
 ## Contributing
 Pull requests welcome! Please use Conventional Commits.

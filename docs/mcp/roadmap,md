@@ -1,0 +1,21 @@
+docs/
+└── mcp/                                # Mounted Context Protocol – external reference docs
+    ├── php/                            # General PHP & legacy
+    │   ├── php-8.3-best-practices.md   # Core PHP idioms, type hints, attributes
+    │   └── wordpress-coding-standards.md  # WPCS, escaping, plugin best practices
+    ├── laravel/                        # Laravel-specific
+    │   ├── laravel-11-guide.md         # Routing, controllers, middleware
+    │   ├── livewire-v3.md              # Components, validation, forms
+    │   └── filament-v3.md              # Admin panels, resources, notifications
+    ├── python/                         # Python backend
+    │   ├── python-3.12-idioms.md       # Type hints, dataclasses, walrus
+    │   ├── fastapi-v0.115.md           # Dependencies, Pydantic, routers
+    │   └── django-flask-patterns.md    # Models/views, blueprints
+    ├── javascript/                     # Frontend/Next.js
+    │   ├── es2025-modern-js.md         # Modules, async, destructuring
+    │   └── nextjs-14-app-router.md     # Server components, actions, metadata
+    ├── react-native/                   # Mobile if used
+    │   └── react-native-expo.md        # Navigation, components, state
+    └── general/                        # Cross-stack
+        ├── security-best-practices.md  # OWASP, CSP, headers
+        └── git-conventional-commits.md # Commit standards

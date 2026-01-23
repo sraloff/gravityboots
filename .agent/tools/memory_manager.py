@@ -116,11 +116,22 @@ def main():
 
     if cmd == "read":
         read()
-    elif cmd == "update" and len(sys.argv) == 4:
-        update_field(sys.argv[2], sys.argv[3])
+    elif cmd == "update" and len(sys.argv) >= 4:
+        # Join all remaining args to allow spaces in value
+        raw_value = " ".join(sys.argv[3:])
+        try:
+            value = json.loads(raw_value)
+        except json.JSONDecodeError:
+            value = raw_value
+        update_field(sys.argv[2], value)
+
     elif cmd == "append" and len(sys.argv) >= 4:
         key = sys.argv[2]
-        item = " ".join(sys.argv[3:])  # string for now
+        raw_item = " ".join(sys.argv[3:])
+        try:
+            item = json.loads(raw_item)
+        except json.JSONDecodeError:
+            item = raw_item
         append_to_list(key, item)
     else:
         print("Invalid command or arguments")

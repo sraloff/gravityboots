@@ -1,0 +1,18 @@
+{
+  "project": {
+    "name": "Antigravity Boilerplate (Template)",
+    "description_summary": "A fresh project initialized from the Gravity Boots template.",
+    "last_updated": "2026-01-23T12:00:00Z"
+  },
+  "prd_summary": "Vision: [To be filled by user]",
+  "scope_summary": "In scope: [To be filled by user]",
+  "technical_specs_summary": "Stack: [To be filled by user]",
+  "active_user_stories": [],
+  "open_questions": [],
+  "key_decisions": [],
+  "recent_milestones": [],
+  "last_agent_action": {
+    "timestamp": "2026-01-23T12:00:00Z",
+    "summary": "Template Initialized"
+  }
+}

@@ -61,37 +61,15 @@ agentic-coding-template/                  # Repo root
 ├── README.md                             # Repo overview & quick start
 └── skills-manifest.md                    # Table of all skills (with names/paths/descriptions)
 
-## Execution Steps (Silent Mode After Approval)
-
-1. Create the folder structure above (use mkdir -p).
-2. Initialize git: git init
-3. Create .gitignore with common ignores (node_modules, .env, venv, __pycache__, .DS_Store, etc.).
-4. Create .env.example with basic placeholders (DATABASE_URL=, APP_KEY=).
-5. Check for existing AGENTS.md in root:
-   - If exists → skip and log: "AGENTS.md already present – using existing version"
-   - If missing → copy master template or generate minimal stub with:
-     ```
-     # AGENTS.md – Minimal Stub (Customize from template)
-     You are Major Tom (Major for short), a senior full-stack agent.
-     Always follow docs/planning/agent-workflow.md
-     ```
-6. Create stub planning docs in /docs/planning/ with basic headers and placeholders.
-7. Create initial /docs/context/memory.json with template structure and placeholders:
-   ```json
-   {
-     "project": {
-       "name": "[Project Name – to be customized]",
-       "description_summary": "New project bootstrapped from Gravity Boots template",
-       "last_updated": "2026-01-22T12:00:00-08:00"
-     },
-     "prd_summary": "Vision: [to be filled]",
-     "scope_summary": "In scope: [to be filled]",
-     "technical_specs_summary": "Stack: [to be filled]",
-     "active_user_stories": [],
-     "open_questions": [],
-     "key_decisions": ["Bootstrapped with project-init skill"],
-     "last_agent_action": {
-       "timestamp": "2026-01-22T12:00:00-08:00",
-       "summary": "Project initialized"
-     }
-   }
+## Execution Steps
+1.  **Run the Init Script**:
+    ```bash
+    python3 .agent/tools/init_project.py "Project Name"
+    ```
+2.  **Verify**: Check that `docs/context/memory.json` has been created.
+3.  **Git Init**:
+    ```bash
+    git init
+    git add .
+    git commit -m "chore: initial commit from gravityboots template"
+    ```

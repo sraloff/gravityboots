@@ -1,0 +1,31 @@
+# Git
+.git
+.gitignore
+
+# Agent & Antigravity - DO NOT DEPLOY TO PROD
+.agent/
+.gemini/
+AGENTS.md
+skills-manifest.md
+
+# Documentation - DO NOT DEPLOY TO PROD
+docs/
+examples/
+sql/
+README.md
+
+# OS / Editor
+.DS_Store
+.vscode/
+.idea/
+
+# Dependencies
+node_modules/
+vendor/
+__pycache__/
+*.pyc
+
+# Env
+.env
+.env.local
+.env.*.local
