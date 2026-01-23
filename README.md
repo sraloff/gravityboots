@@ -50,6 +50,11 @@ Key Features
 •  Supports mixed stacks: PHP, Python, Next.js, etc.
 Contributing
 Pull requests welcome! Please follow Conventional Commits.
+
+When using this template:
+- GitHub copies AGENTS.md automatically — do not delete or overwrite it.
+- The project-init skill will detect and use the existing AGENTS.md.
+
 Last Updated: January 21, 2026
 
 These three pieces should give your template a strong, self-contained starting point.
