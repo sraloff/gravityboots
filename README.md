@@ -108,9 +108,9 @@ flowchart TB
     classDef action fill:#dfd,stroke:#333
     class C,E,P1,S,Lint,P3,P4 decision
     class B,D,F,Exec,T1,Fix,P2,P4,Done,NewPath,ExistingPath,Mark,Git action
+```
 
 ## Key Features
-
 * Modular skills with progressive loading (1–4 active at a time)
 * Persistent memory.json for state across sessions
 * MCP for external docs (/docs/mcp/)
