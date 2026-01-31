@@ -1,5 +1,7 @@
 # Antigravity Skills, MCP, and Memory
 
+! MCP coming soon
+
 A reusable Git template repo for high-performance agentic coding with Antigravity. Supports legacy (PHP/WordPress/LAMP) and modern stacks (Python/FastAPI, Next.js/React Native) with modular skills, planning docs, persistent memory, MCP for external references, and optimized context loading.
 
 ## Quick Start
